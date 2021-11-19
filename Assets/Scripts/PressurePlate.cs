@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [SerializeField] GameObject _button;
+    [SerializeField] Transform _button;
     [SerializeField] Animator _doorAnimator;
 
     [SerializeField] Transform _startPosition;
     [SerializeField] Transform _endPosition;
-    float _desiredDuration = 50;
+
+    Vector3 _newPosition;
+
+    float _desiredDuration = 400;
     float _elapsedTime;
 
+    bool _buttonIsActivated;
 
     private void Awake()
     {
-        _button.transform.position = _startPosition.position;
+        _newPosition = _button.position;
     }
 
     private void Update()
     {
+        MoveButton();
+
         _elapsedTime += Time.deltaTime;
     }
 
@@ -29,17 +35,8 @@ public class PressurePlate : MonoBehaviour
         {
             Debug.Log("Collision detected");
             _doorAnimator.Play("DoorOpen", 0, 0f);
-
-            // PlateEffects();
+            _buttonIsActivated = true;
         }
-
-        /*
-        if (collision.transform.tag == "Player")
-        {
-            Debug.Log("Player collision detected");
-            _doorAnimator.Play("DoorOpen", 0, 0f);
-        }
-        */
     }
 
     private void OnCollisionExit(Collision collision)
@@ -48,28 +45,27 @@ public class PressurePlate : MonoBehaviour
         {
             Debug.Log("Collision ended");
             _doorAnimator.Play("DoorClose", 0, 0f);
+            _buttonIsActivated = false;
         }
-
-        /*
-        if (collision.transform.tag == "Player")
-        {
-            Debug.Log("Player collision ended");
-            _doorAnimator.Play("DoorClose", 0, 0f);
-        }
-        */
     }
 
-    void PlateEffects()
+    void MoveButton()
     {
-        // _button.transform.position = _endPosition.position;
+        Vector3 startPosition = _startPosition.position;
+        Vector3 endPosition = _endPosition.position;
+
+        if(_buttonIsActivated)
+        {
+            _newPosition = endPosition;
+        }
+
+        if(!_buttonIsActivated)
+        {
+            _newPosition = startPosition;
+        }
 
         float percentageComplete = _elapsedTime / _desiredDuration;
 
-        _button.transform.position = Vector3.Lerp(_startPosition.position, _endPosition.position, percentageComplete);
-    }
-
-    void ResetPlate()
-    {
-        
+        _button.position = Vector3.Lerp(_button.position, _newPosition, percentageComplete);
     }
 }

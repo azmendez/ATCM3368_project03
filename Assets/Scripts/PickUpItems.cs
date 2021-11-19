@@ -54,6 +54,18 @@ public class PickUpItems : MonoBehaviour
         }
     }
 
+    /*
+
+    LASER CUBE IDEA
+
+    Physics.Raycast(locationOfWhereFirstRayHitTheCube, objectHit.normal, out _secondObjectHitFromCubeReflectionRay, distanceYouWantRayToShoot)
+
+    Physics.Raycast(_objectHit.transform, _objectHit.normal, out _newLaserHit, _distance)
+        // first line start location = where ray shoots out
+        // first line end location = _objectHit.point
+        // second line start location = _objectHit.point
+    */
+
     void PickUpItem()
     {
         _isPickedUp = true;
