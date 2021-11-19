@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Companion Cube
+  - CompanionCube
+  - TriggerPP
+  - PressurePlate
   layers:
   - Default
   - TransparentFX

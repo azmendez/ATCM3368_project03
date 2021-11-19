@@ -42,7 +42,7 @@ public class PickUpItems : MonoBehaviour
         {
             Debug.Log("Something was hit");
 
-            if(_objectHit.transform.tag == "Companion Cube")
+            if(_objectHit.transform.tag == "CompanionCube")
             {
                 Debug.Log("Found Cube");
                 PickUpItem();
