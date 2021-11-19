@@ -8,7 +8,7 @@ public class CollisionTest : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "CompanionCube")
+        if (collision.transform.tag == "CompanionCube")
         {
             Debug.Log("Cube collision detected");
             _doorAnimator.Play("DoorOpen", 0, 0f);
@@ -17,16 +17,22 @@ public class CollisionTest : MonoBehaviour
         if(collision.transform.tag == "Player")
         {
             Debug.Log("Player collision detected");
-            // _doorAnimator.Play("DoorOpen", 0, 0f);
+            _doorAnimator.Play("DoorOpen", 0, 0f);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.transform.tag == "CompanionCube")
+        if(collision.transform.tag == "CompanionCube")
         {
-            Debug.Log("Collision detected");
-            _doorAnimator.Play("DoorOpen", 0, 0f);
+            Debug.Log("Collision ended");
+            _doorAnimator.Play("DoorClose", 0, 0f);
+        }
+
+        if (collision.transform.tag == "Player")
+        {
+            Debug.Log("Player collision ended");
+            _doorAnimator.Play("DoorClose", 0, 0f);
         }
     }
 }

@@ -40,7 +40,7 @@ public class PickUpItems : MonoBehaviour
 
         if (Physics.Raycast(_playerCamera.transform.position, rayDirection, out _objectHit, _shootDistance))
         {
-            Debug.Log("Something was hit");
+            // Debug.Log("Something was hit");
 
             if(_objectHit.transform.tag == "CompanionCube")
             {
@@ -50,7 +50,7 @@ public class PickUpItems : MonoBehaviour
         }
         else
         {
-            Debug.Log("Miss");
+            // Debug.Log("Miss");
         }
     }
 
@@ -69,7 +69,7 @@ public class PickUpItems : MonoBehaviour
         _isPickedUp = false;
 
         this.transform.parent = null;
-        GetComponent<Rigidbody>().useGravity = true;
         GetComponent<BoxCollider>().enabled = true;
+        GetComponent<Rigidbody>().useGravity = true;
     }
 }
