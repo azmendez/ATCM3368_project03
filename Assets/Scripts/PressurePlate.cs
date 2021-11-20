@@ -5,14 +5,12 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     [SerializeField] Transform _button;
-    [SerializeField] Animator _doorAnimator;
-
     [SerializeField] Transform _startPosition;
     [SerializeField] Transform _endPosition;
 
     Vector3 _newPosition;
 
-    float _desiredDuration = 400;
+    [SerializeField] float _desiredDuration = 200;
     float _elapsedTime;
 
     bool _buttonIsActivated;
@@ -20,6 +18,8 @@ public class PressurePlate : MonoBehaviour
     private void Awake()
     {
         _newPosition = _button.position;
+
+        _buttonIsActivated = false;
     }
 
     private void Update()
@@ -34,7 +34,6 @@ public class PressurePlate : MonoBehaviour
         if (collision.transform.tag == "CompanionCube" || collision.transform.tag == "Player")
         {
             Debug.Log("Collision detected");
-            _doorAnimator.Play("DoorOpen", 0, 0f);
             _buttonIsActivated = true;
         }
     }
@@ -44,7 +43,6 @@ public class PressurePlate : MonoBehaviour
         if (collision.transform.tag == "CompanionCube" || collision.transform.tag == "Player")
         {
             Debug.Log("Collision ended");
-            _doorAnimator.Play("DoorClose", 0, 0f);
             _buttonIsActivated = false;
         }
     }

@@ -38,7 +38,7 @@ public class PickUpItems : MonoBehaviour
         Vector3 rayDirection = _playerCamera.transform.forward;
         Debug.DrawRay(_playerCamera.transform.position, rayDirection * _shootDistance, Color.magenta, 1f);
 
-        if (Physics.Raycast(_playerCamera.transform.position, rayDirection, out _objectHit, _shootDistance))
+        if(Physics.Raycast(_playerCamera.transform.position, rayDirection, out _objectHit, _shootDistance))
         {
             // Debug.Log("Something was hit");
 
@@ -53,18 +53,6 @@ public class PickUpItems : MonoBehaviour
             // Debug.Log("Miss");
         }
     }
-
-    /*
-
-    LASER CUBE IDEA
-
-    Physics.Raycast(locationOfWhereFirstRayHitTheCube, objectHit.normal, out _secondObjectHitFromCubeReflectionRay, distanceYouWantRayToShoot)
-
-    Physics.Raycast(_objectHit.transform, _objectHit.normal, out _newLaserHit, _distance)
-        // first line start location = where ray shoots out
-        // first line end location = _objectHit.point
-        // second line start location = _objectHit.point
-    */
 
     void PickUpItem()
     {
