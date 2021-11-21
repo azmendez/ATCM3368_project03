@@ -14,25 +14,23 @@ public class ActivateTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
-        {
-            Debug.Log("Trigger entered");
+        Debug.Log("Door trigger entered");
 
-            ActivateButton();
+        if (other.transform.tag == "PressurePlate")
+        {
+            ActivateDoor();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
+        if (other.transform.tag == "PressurePlate")
         {
-            Debug.Log("Trigger exited");
-
-            DeactivateButton();
+            DeactivateDoor();
         }
     }
 
-    void ActivateButton()
+    void ActivateDoor()
     {
         _doorAnimator.Play("DoorOpen", 0, 0f);
 
@@ -40,7 +38,7 @@ public class ActivateTrigger : MonoBehaviour
         AudioManager.PlayClip2D(_buttonDownSFX, 1f);
     }
 
-    void DeactivateButton()
+    void DeactivateDoor()
     {
         _doorAnimator.Play("DoorClose", 0, 0f);
 

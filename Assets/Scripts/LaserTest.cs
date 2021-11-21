@@ -16,7 +16,6 @@ public class LaserTest : MonoBehaviour
     {
         _laserLine.positionCount = 2;
     }
-
     private void Update()
     {
         Debug.DrawRay(_startPosition.position, _startPosition.forward * _shootingDistance, Color.red);
