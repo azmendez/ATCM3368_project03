@@ -12,17 +12,12 @@ public class PressurePlate : MonoBehaviour
 
     [SerializeField] float _desiredDuration = 200;
     float _elapsedTime;
-
     bool _buttonIsDown;
-    int _numOfActivations;
 
     private void Awake()
     {
         _newPosition = _button.position;
-
         _buttonIsDown = false;
-
-        _numOfActivations = 0;
     }
 
     private void Update()
@@ -33,51 +28,19 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_buttonIsDown == false)
+        if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
         {
-            if(other.transform.tag == "CompanionCube")
-            {
-                Debug.Log("Cube has entered");
-
-                _buttonIsDown = true;
-                _numOfActivations += 1;
-            }
-
-            if (other.transform.tag == "Player")
-            {
-                Debug.Log("Player has entered");
-
-                _numOfActivations += 1;
-                _buttonIsDown = true;
-            }
+            Debug.Log("Collision detected");
+            _buttonIsDown = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Check #1 " + _numOfActivations);
-
-        if (other.transform.tag == "CompanionCube")
+        if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
         {
-            Debug.Log("Cube has exited");
-            _numOfActivations -= 1;
-
-            if (_numOfActivations == 0 && _buttonIsDown == true)
-            {
-                _buttonIsDown = false;
-            }
-        }
-
-        if(other.transform.tag == "Player")
-        {
-            Debug.Log("Player has exited");
-
-            _numOfActivations -= 1;
-
-            if (_numOfActivations == 0 && _buttonIsDown == true)
-            {
-                _buttonIsDown = false;
-            }
+            Debug.Log("Collision ended");
+            _buttonIsDown = false;
         }
     }
 

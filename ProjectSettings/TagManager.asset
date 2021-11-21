@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CompanionCube
   - PressurePlate
+  - LaserCube
   layers:
   - Default
   - TransparentFX

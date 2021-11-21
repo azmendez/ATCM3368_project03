@@ -5,13 +5,11 @@ using UnityEngine;
 public class PickUpItems : MonoBehaviour
 {
     [SerializeField] Transform _objectDestination;
-
     [SerializeField] Camera _playerCamera;
     float _shootDistance = 5f;
+    bool _isPickedUp;
 
     RaycastHit _objectHit;
-
-    bool _isPickedUp;
 
     private void Awake()
     {
@@ -40,17 +38,10 @@ public class PickUpItems : MonoBehaviour
 
         if(Physics.Raycast(_playerCamera.transform.position, rayDirection, out _objectHit, _shootDistance))
         {
-            // Debug.Log("Something was hit");
-
-            if(_objectHit.transform.tag == "CompanionCube")
+            if(_objectHit.transform.tag == "CompanionCube" || _objectHit.transform.tag == "LaserCube")
             {
-                Debug.Log("Found Cube");
                 PickUpItem();
             }
-        }
-        else
-        {
-            // Debug.Log("Miss");
         }
     }
 
@@ -60,15 +51,15 @@ public class PickUpItems : MonoBehaviour
 
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
-        this.transform.position = _objectDestination.position;
-        this.transform.parent = GameObject.Find("ObjectDestination").transform;
+        _objectHit.transform.position = _objectDestination.position;
+        _objectHit.transform.parent = GameObject.Find("ObjectDestination").transform;
     }
 
     void DropItem()
     {
         _isPickedUp = false;
 
-        this.transform.parent = null;
+        _objectHit.transform.parent = null;
         GetComponent<BoxCollider>().enabled = true;
         GetComponent<Rigidbody>().useGravity = true;
     }
