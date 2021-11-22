@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateTrigger : MonoBehaviour
+public class LaserActivate : MonoBehaviour
 {
     [SerializeField] Animator _doorAnimator;
 
@@ -14,9 +14,9 @@ public class ActivateTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Button door trigger entered");
+        Debug.Log("Laser door trigger entered");
 
-        if (other.transform.tag == "PressurePlate")
+        if (other.transform.tag == "Laser")
         {
             ActivateDoor();
         }
@@ -24,11 +24,37 @@ public class ActivateTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.tag == "PressurePlate")
+        Debug.Log("Laser door trigger exited");
+
+        if (other.transform.tag == "Laser")
         {
             DeactivateDoor();
         }
     }
+
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Laser collision detected");
+
+        if (collision.transform.tag == "Laser")
+        {
+            // Debug.Log("Laser collision detected");
+            ActivateDoor();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Laser collision ended");
+
+        if (collision.transform.tag == "Laser")
+        {
+            // Debug.Log("Laser collision ended");
+            DeactivateDoor();
+        }
+    }
+    */
 
     void ActivateDoor()
     {

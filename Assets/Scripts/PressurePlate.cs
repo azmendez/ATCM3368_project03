@@ -30,7 +30,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
         {
-            Debug.Log("Collision detected");
+            Debug.Log("Button animation trigger entered");
             _buttonIsDown = true;
         }
     }
@@ -39,7 +39,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
         {
-            Debug.Log("Collision ended");
+            Debug.Log("Button animation trigger exited");
             _buttonIsDown = false;
         }
     }

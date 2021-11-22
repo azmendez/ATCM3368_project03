@@ -5,16 +5,15 @@ using UnityEngine;
 public class CubeLaser : MonoBehaviour
 {
     [SerializeField] LineRenderer _laserLine;
-    [SerializeField] GameObject _laserVisual;
     [SerializeField] Transform _shootPosition;
 
     float _shootingDistance = 100;
     RaycastHit _objectHit;
+    // LayerMask _laserMask;
 
     private void Update()
     {
         Debug.DrawRay(_shootPosition.position, _shootPosition.forward * _shootingDistance, Color.blue);
-
         ShootCubeLaser();
     }
 

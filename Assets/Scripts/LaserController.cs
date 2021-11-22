@@ -7,9 +7,15 @@ public class LaserController : MonoBehaviour
     [SerializeField] LineRenderer _laserLine;
     [SerializeField] Transform _startPosition;
     [SerializeField] CubeLaser _laserCube;
+    [SerializeField] GameObject _laserVisual;
 
     float _shootingDistance = 100;
     RaycastHit _objectHit;
+
+    private void Awake()
+    {
+        _laserVisual.SetActive(false);
+    }
 
     private void Update()
     {
@@ -22,9 +28,12 @@ public class LaserController : MonoBehaviour
 
             if(_objectHit.transform.tag == "LaserCube")
             {
-                // TODO add what happens when laser hits cube
-                Debug.Log("Activate laser cube");
+                _laserVisual.SetActive(true);
                 _laserCube.ShootCubeLaser();
+            }
+            else
+            {
+                _laserVisual.SetActive(false);
             }
         }
     }
