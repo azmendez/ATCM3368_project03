@@ -60,27 +60,6 @@ public class PressurePlate : MonoBehaviour
         }
 
         float percentageComplete = _elapsedTime / _desiredDuration;
-
         _button.position = Vector3.Lerp(_button.position, _newPosition, percentageComplete);
     }
-    
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "CompanionCube" || collision.transform.tag == "Player")
-        {
-            Debug.Log("Collision detected");
-            _buttonIsActivated = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "CompanionCube" || collision.transform.tag == "Player")
-        {
-            Debug.Log("Collision ended");
-            _buttonIsActivated = false;
-        }
-    }
-    */
 }
