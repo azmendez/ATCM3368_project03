@@ -6,7 +6,7 @@ public class LaserController : MonoBehaviour
 {
     [SerializeField] LineRenderer _laserLine;
     [SerializeField] Transform _startPosition;
-    [SerializeField] CubeLaser _laserCube;
+    [SerializeField] CubeLaser _cubeLaser;
     [SerializeField] GameObject _laserVisual;
 
     float _shootingDistance = 100;
@@ -29,7 +29,7 @@ public class LaserController : MonoBehaviour
             if(_objectHit.transform.tag == "LaserCube")
             {
                 _laserVisual.SetActive(true);
-                _laserCube.ShootCubeLaser();
+                _cubeLaser.CheckForLaser();
             }
             else
             {

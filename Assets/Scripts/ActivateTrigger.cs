@@ -30,7 +30,7 @@ public class ActivateTrigger : MonoBehaviour
         }
     }
 
-    void ActivateDoor()
+    public void ActivateDoor()
     {
         _doorAnimator.Play("DoorOpen", 0, 0f);
 
@@ -38,7 +38,7 @@ public class ActivateTrigger : MonoBehaviour
         AudioManager.PlayClip2D(_buttonDownSFX, 1f);
     }
 
-    void DeactivateDoor()
+    public void DeactivateDoor()
     {
         _doorAnimator.Play("DoorClose", 0, 0f);
 
