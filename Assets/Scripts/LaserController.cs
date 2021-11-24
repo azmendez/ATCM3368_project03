@@ -34,6 +34,14 @@ public class LaserController : MonoBehaviour
             else
             {
                 _laserVisual.SetActive(false);
+                
+                if(CubeLaser._triggerIsActivated == true)
+                {
+                    _cubeLaser.DeactivateDoor();
+                }
+
+                CubeLaser._triggerIsActivated = false;
+
             }
         }
     }
