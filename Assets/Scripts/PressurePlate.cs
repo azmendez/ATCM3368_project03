@@ -31,6 +31,7 @@ public class PressurePlate : MonoBehaviour
         if (other.transform.tag == "CompanionCube" || other.transform.tag == "Player")
         {
             Debug.Log("Button animation trigger entered");
+            Debug.Log("Enter: " + other.transform.name);
             _buttonIsDown = true;
         }
     }

@@ -14,10 +14,10 @@ public class ActivateTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Button door trigger entered");
-
         if (other.transform.tag == "PressurePlate")
         {
+            Debug.Log("Button door trigger entered");
+
             ActivateDoor();
         }
     }
@@ -26,6 +26,8 @@ public class ActivateTrigger : MonoBehaviour
     {
         if (other.transform.tag == "PressurePlate")
         {
+            Debug.Log("Button door trigger exited");
+
             DeactivateDoor();
         }
     }
