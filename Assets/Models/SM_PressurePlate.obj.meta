@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: 08e8d104101d09844bbd8ad1b1828b07
+guid: f6024060e0637b542a0cd64d7a5d91c9
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baseMat
+    second: {fileID: 2100000, guid: 881954702d5cf234fbc99dd947674f43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buttonMat
+    second: {fileID: 2100000, guid: 38febc10d1aac8c4d91f60c289e88ab8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: foot1Mat
+    second: {fileID: 2100000, guid: 9eddfd7bf224a444cbd2f63e14750b83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: foot2Mat
+    second: {fileID: 2100000, guid: 9eddfd7bf224a444cbd2f63e14750b83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: foot3Mat
+    second: {fileID: 2100000, guid: 9eddfd7bf224a444cbd2f63e14750b83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: foot4Mat
+    second: {fileID: 2100000, guid: 9eddfd7bf224a444cbd2f63e14750b83, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -34,7 +64,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 75
+    globalScale: 0.75
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
