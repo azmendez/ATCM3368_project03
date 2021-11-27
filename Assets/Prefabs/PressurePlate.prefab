@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4152032974204550131}
   m_Layer: 8
-  m_Name: SM_PressurePlate
+  m_Name: PressurePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
