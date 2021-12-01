@@ -28,6 +28,7 @@ public class LaserController : MonoBehaviour
 
             if(_objectHit.transform.tag == "LaserCube")
             {
+                Debug.Log("Laser hit cube");
                 _laserVisual.SetActive(true);
                 _cubeLaser.CheckForLaser();
             }

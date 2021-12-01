@@ -10,8 +10,6 @@ public class CubeLaser : MonoBehaviour
 
     [Header("Door FX")]
     [SerializeField] Animator _doorAnimator;
-    // [SerializeField] AudioClip _buttonDownSFX;
-    // [SerializeField] AudioClip _buttonUpSFX;
     [SerializeField] AudioClip _doorCloseSFX;
     [SerializeField] AudioClip _doorOpenSFX;
 
@@ -29,6 +27,7 @@ public class CubeLaser : MonoBehaviour
         if (_triggerIsActivated == false)
         {
             DeactivatedReceiver();
+            // Debug.Log("'Deactivate' laser started");
         }
         else
         {
@@ -40,6 +39,8 @@ public class CubeLaser : MonoBehaviour
     {
         if (Physics.Raycast(_shootPosition.position, _shootPosition.forward, out _objectHit, _shootingDistance))
         {
+            Debug.Log("Cube laser is shooting");
+
             _laserLine.SetPosition(0, _shootPosition.position);
             _laserLine.SetPosition(1, _objectHit.point);
             
@@ -75,7 +76,6 @@ public class CubeLaser : MonoBehaviour
         _doorAnimator.Play("laser_DoorOpen", 0, 0f);
 
         AudioManager.PlayClip2D(_doorOpenSFX, 1f);
-        // AudioManager.PlayClip2D(_buttonDownSFX, 1f);
     }
 
     public void DeactivateDoor()
@@ -83,6 +83,5 @@ public class CubeLaser : MonoBehaviour
         _doorAnimator.Play("laser_DoorClose", 0, 0f);
 
         AudioManager.PlayClip2D(_doorCloseSFX, 1f);
-        // AudioManager.PlayClip2D(_buttonUpSFX, 1f);
     }
 }
