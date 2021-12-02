@@ -7,6 +7,7 @@ public class CubeLaser : MonoBehaviour
     [Header("Laser Settings")]
     [SerializeField] LineRenderer _laserLine;
     [SerializeField] Transform _shootPosition;
+    [SerializeField] GameObject _sphereVisual;
 
     [Header("Door FX")]
     [SerializeField] Animator _doorAnimator;
@@ -16,6 +17,11 @@ public class CubeLaser : MonoBehaviour
     float _shootingDistance = 100;
     RaycastHit _objectHit;
     public static bool _triggerIsActivated;
+
+    private void Awake()
+    {
+        _sphereVisual.SetActive(false);
+    }
 
     private void Update()
     {
@@ -76,6 +82,7 @@ public class CubeLaser : MonoBehaviour
         _doorAnimator.Play("laser_DoorOpen", 0, 0f);
 
         AudioManager.PlayClip2D(_doorOpenSFX, 1f);
+        _sphereVisual.SetActive(true);
     }
 
     public void DeactivateDoor()
@@ -83,5 +90,6 @@ public class CubeLaser : MonoBehaviour
         _doorAnimator.Play("laser_DoorClose", 0, 0f);
 
         AudioManager.PlayClip2D(_doorCloseSFX, 1f);
+        _sphereVisual.SetActive(false);
     }
 }
