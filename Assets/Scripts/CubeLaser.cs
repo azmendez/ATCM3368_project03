@@ -14,6 +14,11 @@ public class CubeLaser : MonoBehaviour
     [SerializeField] AudioClip _doorCloseSFX;
     [SerializeField] AudioClip _doorOpenSFX;
 
+    [Header("Door Lights")]
+    [SerializeField] GameObject _doorLight;
+    [SerializeField] Material _blueMaterial;
+    [SerializeField] Material _orangeMaterial;
+
     float _shootingDistance = 100;
     RaycastHit _objectHit;
     public static bool _triggerIsActivated;
@@ -83,6 +88,8 @@ public class CubeLaser : MonoBehaviour
 
         AudioManager.PlayClip2D(_doorOpenSFX, 1f);
         _sphereVisual.SetActive(true);
+
+        _doorLight.GetComponent<MeshRenderer>().material = _orangeMaterial;
     }
 
     public void DeactivateDoor()
@@ -91,5 +98,7 @@ public class CubeLaser : MonoBehaviour
 
         AudioManager.PlayClip2D(_doorCloseSFX, 1f);
         _sphereVisual.SetActive(false);
+
+        _doorLight.GetComponent<MeshRenderer>().material = _blueMaterial;
     }
 }
