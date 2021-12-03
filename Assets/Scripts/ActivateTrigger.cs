@@ -13,9 +13,13 @@ public class ActivateTrigger : MonoBehaviour
     [SerializeField] AudioClip _doorOpenSFX;
 
     [Header("Door Lights")]
-    [SerializeField] GameObject _doorLight;
-    [SerializeField] Material _blueMaterial;
-    [SerializeField] Material _orangeMaterial;
+    [SerializeField] GameObject _blueStrip;
+    [SerializeField] GameObject _orangeStrip;
+
+    private void Awake()
+    {
+        _orangeStrip.SetActive(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,7 +48,8 @@ public class ActivateTrigger : MonoBehaviour
         AudioManager.PlayClip2D(_doorOpenSFX, 1f);
         AudioManager.PlayClip2D(_buttonDownSFX, 1f);
 
-        _doorLight.GetComponent<MeshRenderer>().material = _orangeMaterial;
+        _blueStrip.SetActive(false);
+        _orangeStrip.SetActive(true);
     }
 
     public void DeactivateDoor()
@@ -54,6 +59,7 @@ public class ActivateTrigger : MonoBehaviour
         AudioManager.PlayClip2D(_doorCloseSFX, 1f);
         AudioManager.PlayClip2D(_buttonUpSFX, 1f);
 
-        _doorLight.GetComponent<MeshRenderer>().material = _blueMaterial;
+        _orangeStrip.SetActive(false);
+        _blueStrip.SetActive(true);
     }
 }

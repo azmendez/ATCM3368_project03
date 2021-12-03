@@ -6,6 +6,8 @@ public class PickUpItems : MonoBehaviour
 {
     [SerializeField] Transform _objectDestination;
     [SerializeField] Camera _playerCamera;
+    [SerializeField] AudioClip _pickupSFX;
+    [SerializeField] AudioClip _dropSFX;
     float _shootDistance = 5f;
     bool _isPickedUp;
 
@@ -49,6 +51,8 @@ public class PickUpItems : MonoBehaviour
     {
         _isPickedUp = true;
 
+        AudioManager.PlayClip2D(_pickupSFX, 1f);
+
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<Rigidbody>().useGravity = false;
         _objectHit.transform.position = _objectDestination.position;
@@ -58,6 +62,8 @@ public class PickUpItems : MonoBehaviour
     void DropItem()
     {
         _isPickedUp = false;
+
+        AudioManager.PlayClip2D(_dropSFX, 1f);
 
         _objectHit.transform.parent = null;
         GetComponent<BoxCollider>().enabled = true;
