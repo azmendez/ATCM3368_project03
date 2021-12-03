@@ -8,6 +8,7 @@ public class LaserController : MonoBehaviour
     [SerializeField] Transform _startPosition;
     [SerializeField] CubeLaser _cubeLaser;
     [SerializeField] GameObject _laserVisual;
+    [SerializeField] ParticleSystem _sparksPS;
 
     float _shootingDistance = 100;
     RaycastHit _objectHit;
