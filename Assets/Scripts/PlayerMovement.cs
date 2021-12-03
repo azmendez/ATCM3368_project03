@@ -45,9 +45,33 @@ public class PlayerMovement : MonoBehaviour
 
         _controller.Move(_velocity * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.Backspace))
+        MiscButtons();
+
+        FootstepSFX();
+    }
+
+    void MiscButtons()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene("Level");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+    void FootstepSFX()
+    {
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            if(_isGrounded && GetComponent<AudioSource>().isPlaying == false)
+            {
+                GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.2f);
+                GetComponent<AudioSource>().Play();
+            }
         }
     }
 }
